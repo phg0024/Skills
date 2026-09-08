@@ -1,0 +1,6 @@
+interface:
+  display_name: "Monthly Dashboard"
+  short_description: "Build bilingual monthly BC dashboards"
+  default_prompt: "Use $monthly-dashboard to build and verify the previous month's German and English Silver Spirits dashboards."
+policy:
+  allow_implicit_invocation: true

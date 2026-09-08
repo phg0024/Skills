@@ -1,0 +1,4 @@
+interface:
+  display_name: "New Pics"
+  short_description: "Process new product photos end-to-end."
+  default_prompt: "Use $new-pics to rename the top-level product photos from labels and BC item IDs, remove backgrounds, resize to 1920px, and export JPGs."

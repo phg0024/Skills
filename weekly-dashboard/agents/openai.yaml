@@ -1,0 +1,8 @@
+interface:
+  display_name: "Weekly Dashboard"
+  short_description: "Build the weekly BC Excel dashboard"
+  brand_color: "#1F4E5F"
+  default_prompt: "Use $weekly-dashboard to build and verify the latest Silver Spirits BC dashboard."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "BC Purchase Order"
+  short_description: "Create verified draft supplier orders"
+  default_prompt: "Use $bc-purchase-order to enter this supplier document as a verified draft Business Central purchase order."
+policy:
+  allow_implicit_invocation: true

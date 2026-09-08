@@ -1,0 +1,6 @@
+interface:
+  display_name: "ABs updated"
+  short_description: "Sync Business Central orders into ABs workbook"
+  default_prompt: "Use $abs-updated to sync new Business Central sales orders into ABs updated.xlsx or append Lines.xlsx exports."
+policy:
+  allow_implicit_invocation: true

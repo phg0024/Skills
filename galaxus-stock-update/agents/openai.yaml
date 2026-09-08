@@ -1,0 +1,6 @@
+interface:
+  display_name: "Galaxus Stock Update"
+  short_description: "Deduct BC lines from Galaxus stock"
+  default_prompt: "Use $galaxus-stock-update to deduct these Lines exports from Galaxusstock.xlsx and verify the saved workbook."
+policy:
+  allow_implicit_invocation: true

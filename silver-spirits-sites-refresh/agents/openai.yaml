@@ -1,0 +1,6 @@
+interface:
+  display_name: "Silver Spirits Sites Refresh"
+  short_description: "Refresh dashboard Site snapshots safely"
+  default_prompt: "Use $silver-spirits-sites-refresh to rebuild and verify the requested Silver Spirits dashboard snapshot."
+policy:
+  allow_implicit_invocation: true

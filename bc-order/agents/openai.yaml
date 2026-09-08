@@ -1,0 +1,4 @@
+interface:
+  display_name: "BC Sales Order"
+  short_description: "Create draft Business Central sales orders"
+  default_prompt: "Use $bc-order to create a draft Business Central sales order from an attached customer order file."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pics folder"
+  short_description: "Create T1 shipment photo folders from BC orders"
+  default_prompt: "Use $pics-folder to create a verified T1 shipment photo folder for this Business Central purchase order."

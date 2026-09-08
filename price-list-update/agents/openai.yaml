@@ -1,0 +1,4 @@
+interface:
+  display_name: "Price List Update"
+  short_description: "Refresh supplier price list tabs safely"
+  default_prompt: "Use $price-list-update to refresh a supplier tab in a Kalkulation workbook from a new price list."

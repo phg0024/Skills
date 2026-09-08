@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer YTD"
+  short_description: "Build Silver Spirits customer YTD sales reports"
+  default_prompt: "Use $customer-ytd to build the latest Customer YTD sales comparison workbook."

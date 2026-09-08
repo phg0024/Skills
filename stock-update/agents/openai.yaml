@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stock Update"
+  short_description: "Update Kalkulation Lager (2) from Stock List exports."
+  default_prompt: "Use $stock-update to update the Lager (2) tab in Kalkulation.xlsx from Stock List.xlsx."
