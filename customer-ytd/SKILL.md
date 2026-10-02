@@ -9,6 +9,10 @@ description: Build the Silver Spirits Customer YTD Excel analysis from live Busi
 
 Create the Silver Spirits customer sales workbook from live Business Central posted sales documents.
 
+## Excel Files
+
+Generate and inspect the workbook through the script and Python workbook libraries; do not launch Microsoft Excel or require the output to be open. If formula results need recalculation, use an available headless calculation engine because `openpyxl` does not calculate formulas. If fresh results cannot be obtained headlessly, report that limitation rather than using desktop Excel.
+
 The report compares current year-to-date sales against the same calendar dates in 2025 and 2024, with customer tables and charts split into:
 
 - `Swiss`: sell-to country is Swiss and city is not in the Samnaun area.
@@ -91,7 +95,7 @@ The dashboard and customer tabs should include native Excel charts. The source l
 After running the script:
 
 1. Confirm a dated workbook was created in `outputs/bc-customer-sales-analysis`.
-2. Open or inspect the workbook and verify all expected sheets exist.
+2. Inspect the workbook programmatically and verify all expected sheets exist; desktop Excel is not required.
 3. Check that `Dashboard`, `Monthly Trend`, and each regional customer tab have charts.
 4. Scan the workbook for display/formula errors such as `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, and `#N/A`.
 5. Report the workbook path and the printed regional YTD totals for 2026, 2025, and 2024.

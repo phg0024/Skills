@@ -5,11 +5,17 @@ description: Refresh supplier tabs in Silver Spirits Kalkulation workbooks from 
 
 # Price List Update
 
+This skill is for supplier price-list or assortment updates to supplier tabs. For a Business Central `Stock List.xlsx` refresh of `Lager (2)`, use the `stock-update` skill instead.
+
 ## Overview
 
 Refresh one supplier tab in a Kalkulation workbook from a supplier price list or assortment workbook. Preserve user-maintained fields by matching ProductID, not by row number.
 
-Use the spreadsheet skill/workflow for workbook handling. Use `/Users/ph/.codex/skills/price-list-update/scripts/update_price_list.py` for the deterministic tab refresh unless the workbook structure requires a custom adjustment.
+## Excel Files
+
+Process source and target workbooks directly with the supplied script or Python workbook libraries; do not launch Microsoft Excel or require a workbook to be open. Formula-derived source values must come from valid cached results or an available headless recalculation engine because `openpyxl` does not calculate formulas. If a required source value is unavailable, stop rather than guess or open desktop Excel. Verify the saved workbook programmatically.
+
+Use `/Users/ph/.codex/skills/price-list-update/scripts/update_price_list.py` for the deterministic tab refresh unless the workbook structure requires a custom adjustment.
 
 ## Standard Rules
 
@@ -39,7 +45,7 @@ Map supplier columns using header names and common synonyms:
 - `P` currency: `Currency`, `Währung`
 - `Q` EAN: `EAN`, `EAN code sales unit`, `barcode`, `Barcode`
 
-For Square-style files, source rows usually start after a header row containing `ProductID`, and `Price bottle` is already per bottle. For ODC/Overseas-style files, `Price/btl` may be formula-derived; load the source workbook with calculated values.
+For Square-style files, source rows usually start after a header row containing `ProductID`, and `Price bottle` is already per bottle. For ODC/Overseas-style files, `Price/btl` may be formula-derived; read valid cached values or recalculate the source with a headless spreadsheet engine before using that column. If neither is available, do not guess the price.
 
 ## Workflow
 

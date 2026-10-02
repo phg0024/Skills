@@ -9,6 +9,10 @@ description: Build or maintain the Silver Spirits weekly Business Central Excel 
 
 Create the Silver Spirits Business Central Excel dashboard from live BC data and keep the Monday automation aligned with the current business rules.
 
+## Excel Files
+
+Generate and inspect the workbook through the script and Python workbook libraries; do not launch Microsoft Excel or require the output to be open. If formula results need recalculation, use an available headless calculation engine because `openpyxl` does not calculate formulas. If fresh results cannot be obtained headlessly, report that limitation rather than using desktop Excel.
+
 ## Workspace
 
 Primary workspace:
@@ -77,7 +81,7 @@ The generated workbook should contain these sheets:
 After running the script:
 
 1. Confirm a dated workbook was created in `outputs/bc-weekly-dashboard`.
-2. Open or inspect the workbook and verify all expected sheets exist.
+2. Inspect the workbook programmatically and verify all expected sheets exist; desktop Excel is not required.
 3. Check `Dashboard` has KPI values and native Excel charts.
 4. Check `Gross Margin` only contains the simple margin scope.
 5. Check `Margin Scope` documents included and excluded customers.

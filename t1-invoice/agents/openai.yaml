@@ -1,0 +1,4 @@
+interface:
+  display_name: "T1 Invoice"
+  short_description: "Create draft CHF T1 invoices"
+  default_prompt: "Use $t1-invoice to create a draft T1 invoice from the Lines XLSX and EMCS PDF."

@@ -7,6 +7,10 @@ description: Build the bilingual Silver Spirits monthly Business Central Excel d
 
 Build and verify the German and English Silver Spirits monthly dashboards from live Business Central data.
 
+## Excel Files
+
+Use the generator and Python workbook libraries to create and inspect workbooks directly; do not launch Microsoft Excel or require a workbook to be open. Recalculate formulas with an available headless calculation engine when refreshed results are required; `openpyxl` does not calculate formulas. If fresh results cannot be obtained headlessly, report that limitation rather than using desktop Excel.
+
 ## Workspace and script
 
 - Workspace: `/Users/ph/Documents/Silver Spirits Project Codex`
@@ -48,7 +52,7 @@ Use `--run-date YYYY-MM-DD` only for a requested historical run. Never use `--dr
 - Confirm both expected DE and EN files were created for the reporting month.
 - Confirm `Dashboard`, `Umsatzanalyse`, and `Einkaufsanalyse` exist in both files.
 - Confirm chart counts remain at least 3, 3, and 2 on those sheets.
-- Scan displayed values and formulas for `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, and `#N/A`.
+- Inspect formulas and available cached/display values programmatically for `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, and `#N/A`. Use headless recalculation when fresh formula results are required.
 - Confirm sales, purchase, document-count, and active-customer KPIs are populated; do not accept an all-zero workbook when source documents exist.
 - Check customer and supplier display names do not fall back to bare numeric BC codes.
 - Report both output paths, reporting period, month-end FX rates, headline KPIs, and any source caveat.

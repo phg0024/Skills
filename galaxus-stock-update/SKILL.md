@@ -7,6 +7,10 @@ description: Update Silver Spirits Galaxusstock.xlsx by deducting item quantitie
 
 Update the Galaxus stock workbook from one or more Business Central line exports without changing unrelated workbook content.
 
+## Excel Files
+
+Read and write the workbooks directly with scripts or Python workbook libraries; do not launch Microsoft Excel or require the workbook to be open. Reload saved workbooks programmatically for verification. Use a headless calculation engine if formulas need recalculation; `openpyxl` does not calculate formulas. If fresh results cannot be obtained headlessly, report that limitation rather than using desktop Excel.
+
 ## Defaults
 
 - Stock workbook directory: `/Users/ph/Library/CloudStorage/OneDrive-IZComputer/SilverSpirits/Claude/GalaxusStockUpdate`
@@ -27,5 +31,5 @@ Update the Galaxus stock workbook from one or more Business Central line exports
 
 - Inspect a mapping and totals before writing. Check for duplicate ProductIDs in the stock workbook and fail if they make matching ambiguous.
 - Preserve the source workbook by default and write a separate output copy.
-- Reopen the saved workbook and independently verify every deduction, exact-zero removal, unchanged non-inventory cells, table range, row counts, and absence of spreadsheet errors.
+- Reload the saved workbook programmatically and independently verify every deduction, exact-zero removal, unchanged non-inventory cells, table range, row counts, and spreadsheet errors.
 - Report files used, products updated, total units deducted, removed products, negative inventories, missing ProductIDs, and the final workbook path.

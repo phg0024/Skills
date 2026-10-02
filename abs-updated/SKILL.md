@@ -9,7 +9,11 @@ description: Update Silver Spirits "ABs updated.xlsx" from live Business Central
 
 Append new Business Central sales-order lines to the Silver Spirits `ABs updated.xlsx` workbook.
 
-Use the spreadsheet workflow for workbook handling. Prefer these project scripts:
+## Excel Files
+
+Treat Excel workbooks as files. Use the bundled script or Python workbook libraries to read and write them; do not launch Microsoft Excel or require the workbook to be open. For formula-derived values, use cached results or an available headless calculation engine when refreshed results are needed; libraries such as `openpyxl` do not calculate formulas. Verify output workbooks programmatically. If required formula results are unavailable, report the limitation or stop when the value is required; never use desktop Excel as a fallback.
+
+Prefer these project scripts:
 
 - `/Users/ph/.codex/skills/abs-updated/scripts/update_abs.py` for downloaded `Lines*.xlsx` exports.
 - `scripts/sync_abs_from_business_central.py` for live Business Central sales orders.
@@ -102,7 +106,7 @@ Replace `YYYY-MM-DD` with the run date. Run the dry-run first. The script report
 When the standard Business Central endpoint does not return the alcohol code:
 
 1. Use the authenticated Business Central sales-order page in the browser.
-2. Open each new order identified by the sync dry-run, searching by its order/document number.
+2. Open each new order in the authenticated Business Central browser session, searching by its order/document number. This browser lookup does not require opening the Excel workbook.
 3. For every product line, read `No.` and `Alcohol Percentage Code`. Ignore blank trailing rows and do not infer values.
 4. Save the results as JSON keyed by document number and item number, for example:
 

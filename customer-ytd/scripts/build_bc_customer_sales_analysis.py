@@ -6,9 +6,10 @@ import os
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
+from collections.abc import Iterable
 
 from openpyxl import Workbook, load_workbook
 from openpyxl.chart import BarChart, DoughnutChart, LineChart, Reference
@@ -242,8 +243,8 @@ def summarize_customers(
     as_of: date,
 ) -> list[dict[str, Any]]:
     current_ytd = ytd_period(as_of)
-    prior_ytd = prior_year_same_dates(current_ytd)
-    two_year_ytd = comparison_same_dates(current_ytd, 2)
+    prior_year_same_dates(current_ytd)
+    comparison_same_dates(current_ytd, 2)
     current_mtd = mtd_period(as_of)
     prior_mtd = prior_year_same_dates(current_mtd)
     two_year_mtd = comparison_same_dates(current_mtd, 2)
@@ -1046,9 +1047,7 @@ def polish_sheet(ws: Worksheet) -> None:
                     cell.number_format = "0.0%"
                 elif "Customer" in header or "Documents" in header:
                     cell.number_format = "#,##0"
-                elif "Qty" in header or "Quantity" in header:
-                    cell.number_format = '#,##0.00;[Red]-#,##0.00'
-                elif "CHF" in header or header in {"Current", "Last year", "2024", "2025", "2026"}:
+                elif "Qty" in header or "Quantity" in header or "CHF" in header or header in {"Current", "Last year", "2024", "2025", "2026"}:
                     cell.number_format = '#,##0.00;[Red]-#,##0.00'
     for column_cells in ws.columns:
         values = [normal_text(cell.value) for cell in column_cells[: min(ws.max_row, 80)]]

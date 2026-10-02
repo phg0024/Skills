@@ -7,6 +7,10 @@ description: Refresh Silver Spirits dashboard Site snapshots from canonical Busi
 
 Refresh an existing Silver Spirits dashboard Site snapshot without changing the Site's presentation or access settings.
 
+## Excel Files
+
+Read workbook inputs through the provided scripts or Python workbook libraries; do not launch Microsoft Excel or require the workbook to be open. Use cached formula results or an available headless calculation engine when current calculated values are needed; `openpyxl` does not calculate formulas. If required formula results are unavailable, stop rather than guess or open desktop Excel.
+
 ## Workspace
 
 Run from `/Users/ph/Documents/Silver Spirits Project Codex`. The scripts load local `.env` values:

@@ -97,7 +97,7 @@ def update_lager2(kalkulation: Path, stock_list: Path, output: Path, overwrite: 
     stock_rows = [
         values
         for values in stock.iter_rows(min_row=2, values_only=True)
-        if product_key(value_from_row(values, headers, "Article ID", "Product ID"))
+        if product_key(value_from_row(values, headers, "Article ID", "Product ID", "Product UD"))
     ]
     final_row = len(stock_rows) + 1
 
@@ -112,7 +112,7 @@ def update_lager2(kalkulation: Path, stock_list: Path, output: Path, overwrite: 
     blue_count = 0
 
     for idx, values in enumerate(stock_rows, start=2):
-        article_id = value_from_row(values, headers, "Article ID", "Product ID")
+        article_id = value_from_row(values, headers, "Article ID", "Product ID", "Product UD")
         name = value_from_row(values, headers, "Product name")
         size = value_from_row(values, headers, "Size")
         alcohol = value_from_row(values, headers, "Alcohol %")
@@ -150,7 +150,7 @@ def update_lager2(kalkulation: Path, stock_list: Path, output: Path, overwrite: 
             target.cell(idx, 3).fill = copy(matched["name_fill"])
         else:
             blue_count += 1
-            target.cell(idx, 2).fill = copy(BLUE_FILL)
+            target.cell(idx, 3).fill = copy(BLUE_FILL)
 
     wb.save(output)
     return {"updated_rows": len(stock_rows), "matched_rows": matched_count, "blue_rows": blue_count}

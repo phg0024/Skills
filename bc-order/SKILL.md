@@ -15,12 +15,23 @@ Create or resume a draft Business Central sales order from a customer order spre
 - Connector: `/Users/ph/Documents/Silver Spirits Project Codex`
 - Credentials: connector `.env`
 
+## Excel Files
+
+Read customer `.xlsx` files through the bundled script or Python workbook libraries. Do not launch Microsoft Excel or require the source workbook to be open. If the source depends on formula results, use cached values or an available headless calculation engine; `openpyxl` does not calculate formulas. If required formula results are unavailable, stop rather than guess or open desktop Excel.
+
 ## Workflow
 
-1. Confirm the source XLSX and any overrides (customer, location, external doc no, target sales order, order date).
+1. Confirm the source XLSX and any overrides (customer, location, external doc no, target sales order, order date). Check the customer's Currency Code in Business Central.
 2. Dry-run first.
 3. Execute only after validation succeeds.
 4. Report the BC sales order number, line count, and totals.
+
+## Currency
+
+- On the sales order header, always explicitly set **Invoice Details > Currency Code** to `EUR` or `CHF`, including when the currency is CHF. Do not leave the field blank to rely on the local-currency default.
+- Match the customer's Currency Code in Business Central by default. Use a different currency only when the source order or the user clearly specifies it; validate the order amounts in that currency and state the exception.
+- If the source currency conflicts with the customer currency and does not clearly establish an override, resolve the conflict before creating or changing an order.
+- The API header field is `currencyCode`. The XLSX script reads the source invoice currency and sends it in that field. Confirm it matches the intended currency in the dry-run and verify the saved order's Currency Code.
 
 ## Commands
 
@@ -54,6 +65,7 @@ Useful overrides:
 ## Safety
 
 - Always dry-run before `--execute`.
+- Ensure the order header has the intended `currencyCode` before adding lines, and verify the saved Currency Code.
 - Prefer `--sales-order-number` when the user names an existing draft order.
 - Prefer resume by external document number when no sales order number is given.
 - Do not invent BC item numbers. Fail if a supplier item number is missing in BC.
